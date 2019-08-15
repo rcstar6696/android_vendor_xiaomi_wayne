@@ -31,6 +31,21 @@ LOCAL_VENDOR_MODULE := true
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := fingerprint.fpc.default
+LOCAL_MODULE_OWNER := xiaomi
+ifeq ($(TARGET_DEVICE),jasmine_sprout)
+LOCAL_SRC_FILES := proprietary/vendor/lib64/hw/fingerprint.fpc.jasmine.so
+else
+LOCAL_SRC_FILES := proprietary/vendor/lib64/hw/fingerprint.fpc.wayne.so
+endif
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR)/lib64/hw
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_VENDOR_MODULE := true
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE := FingerprintExtensionService
 LOCAL_MODULE_OWNER := xiaomi
 LOCAL_SRC_FILES := proprietary/vendor/app/FingerprintExtensionService/FingerprintExtensionService.apk
